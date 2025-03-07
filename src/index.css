@@ -89,3 +89,45 @@ button:hover {
 .reset:hover {
   background-color: #0056b3;
 }
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.todo-item:hover {
+  background: #e9ecef;
+}
+
+.toggle-complete {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.task-text {
+  flex-grow: 1;
+  font-size: 16px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
