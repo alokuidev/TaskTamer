@@ -11,11 +11,16 @@ const TaskFun = (state,action) =>{
             case 'add':{
                 const newTask = {
                     id:nanoid(),
-                    name:action.payload
+                    name:action.payload,
+                    status:false
                 };
                 return {taskList: [...state.taskList,newTask]}}
+            case 'delete':
+                return { taskList: state.taskList.filter((elem) => elem.id !== action.payload)}
+            case 'check':
+                return  { taskList: state.taskList.map((elem) => elem.id === action.payload ? {...elem,status:true} : elem)}    
             default:
-                return state;
+                return {taskList : []}
         }
 }
 const ContextProvider = ({children}) =>{

@@ -2,11 +2,15 @@ import React, { useContext, useEffect } from "react";
 import UseContext from "../Context/UseContext";
 
 const TodoList = () => {
-  const { taskState } = useContext(UseContext);
+  const { taskState,dispatcher } = useContext(UseContext);
 
-  useEffect(() => {
-    console.log(taskState.taskList.length);
-  }, [taskState]);
+  const checkTask = (e, id) =>{
+        console.log(e.target.checked)
+        if(e.target.checked){
+            dispatcher({type:'check', payload:id})
+        }
+  } 
+
   return (
     <>
       <ul id="todo-list">
@@ -14,9 +18,9 @@ const TodoList = () => {
           taskState.taskList.map((elem) => {
             return (
               <li className="todo-item" key={elem.id}>
-                <input type="checkbox" className="toggle-complete" />
-                <span className="task-text">{elem.name}</span>
-                <button className="delete-btn">❌</button>
+                <input type="checkbox" className="toggle-complete" value={elem.id} onClick={(e) =>checkTask(e,elem.id)} />
+                <span className={`task-text ${elem.status ? 'completed' : ''}`}>{elem.name}</span>
+                <button className="delete-btn" onClick={() => dispatcher({type:'delete',payload:elem.id})}>❌</button>
               </li>
             );
           })}
