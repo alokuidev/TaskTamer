@@ -20,8 +20,7 @@ const todoReducer = (state,action) =>{
         case 'status':
             return {taskList:state.taskList.map((elem) => elem.id === action.payload ? {...elem, IsCompleted: !elem.IsCompleted} : elem )}    
         default:
-            return {taskList:state.taskList.map((elem) =>({
-                ...elem,IsCompleted:false}))}       
+            return {taskList:state.taskList.map((elem) =>({...elem,IsCompleted:false}))}       
     }
 }
 const ContextProvider = ({children}) => {
